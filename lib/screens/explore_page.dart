@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../api/mock_yummy_service.dart';
+import '../components/restaurant_section.dart';
 
 class ExplorePage extends StatelessWidget {
   final mockService = MockYummyService();
@@ -19,10 +20,7 @@ class ExplorePage extends StatelessWidget {
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
             children: [
-              Container(
-                height: 300,
-                color: Colors.red,
-              ),
+              RestaurantSection(restaurants: restaurants),
               Container(
                 height: 300,
                 color: Colors.orange,
