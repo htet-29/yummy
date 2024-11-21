@@ -13,7 +13,7 @@ class ExploreData {
 }
 
 class MockYummyService {
-  Future<ExploreData> _getExploreData() async {
+  Future<ExploreData> getExploreData() async {
     final restaurants = await _getRestaurants();
     final friendPosts = await _getFriendPosts();
     final categories = await _getCategories();
