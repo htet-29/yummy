@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../api/mock_yummy_service.dart';
+import '../components/category_section.dart';
 import '../components/restaurant_section.dart';
 
 class ExplorePage extends StatelessWidget {
@@ -21,10 +22,7 @@ class ExplorePage extends StatelessWidget {
             scrollDirection: Axis.vertical,
             children: [
               RestaurantSection(restaurants: restaurants),
-              Container(
-                height: 300,
-                color: Colors.orange,
-              ),
+              CategorySection(categories: categories),
               Container(
                 height: 600,
                 color: Colors.red,
