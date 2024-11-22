@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/restaurant.dart';
+import '../screens/restaurant_page.dart';
 import 'restaurant_landscape_card.dart';
 
 class RestaurantSection extends StatelessWidget {
@@ -35,7 +36,16 @@ class RestaurantSection extends StatelessWidget {
                 return SizedBox(
                   width: 300,
                   child: RestaurantLandscapeCard(
-                      restaurant: restaurants[index], onTap: () {}),
+                      restaurant: restaurants[index],
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                RestaurantPage(restaurant: restaurants[index]),
+                          ),
+                        );
+                      }),
                 );
               },
             ),
