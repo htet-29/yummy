@@ -19,12 +19,70 @@ class _RestaurantPageState extends State<RestaurantPage> {
   static const double maxWidth = 1000;
   static const double drawerWidth = 375.0;
 
+  CustomScrollView _buildCustomScrollView() {
+    return CustomScrollView(
+      slivers: [
+        _buildSliverAppBar(),
+        SliverToBoxAdapter(
+          child: Container(
+            height: 300,
+            color: Colors.blue,
+          ),
+        ),
+        SliverFillRemaining(
+          child: Container(
+            color: Colors.green,
+          ),
+        )
+      ],
+    );
+  }
+
+  SliverAppBar _buildSliverAppBar() {
+    return SliverAppBar(
+      pinned: true,
+      expandedHeight: 300,
+      flexibleSpace: FlexibleSpaceBar(
+        background: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 64.0),
+            child: Stack(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 30.0),
+                  decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(16.0),
+                      image: DecorationImage(
+                        image: AssetImage(widget.restaurant.imageUrl),
+                        fit: BoxFit.cover,
+                      )),
+                ),
+                const Positioned(
+                  bottom: 0,
+                  left: 16.0,
+                  child: CircleAvatar(
+                    radius: 30,
+                    child: Icon(
+                      Icons.store,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('Restaurant Page'),
+        child: _buildCustomScrollView(),
       ),
     );
   }
