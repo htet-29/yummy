@@ -23,12 +23,7 @@ class _RestaurantPageState extends State<RestaurantPage> {
     return CustomScrollView(
       slivers: [
         _buildSliverAppBar(),
-        SliverToBoxAdapter(
-          child: Container(
-            height: 300,
-            color: Colors.blue,
-          ),
-        ),
+        _buildInfoSection(),
         SliverFillRemaining(
           child: Container(
             color: Colors.green,
@@ -72,6 +67,37 @@ class _RestaurantPageState extends State<RestaurantPage> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _buildInfoSection() {
+    final textTheme = Theme.of(context).textTheme;
+    final restaurant = widget.restaurant;
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              restaurant.name,
+              style: textTheme.headlineLarge,
+            ),
+            Text(
+              restaurant.address,
+              style: textTheme.bodySmall,
+            ),
+            Text(
+              restaurant.getRatingAndDistance(),
+              style: textTheme.bodySmall,
+            ),
+            Text(
+              restaurant.attributes,
+              style: textTheme.labelSmall,
+            ),
+          ],
         ),
       ),
     );
